@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        
+            <p>Id-pro <input type="text" id="id"></p>
+            <p>Name Customer <input type="text" id="nameCus"></p>
+            <p>Name Product <input type="text" id="namePro"></p>
+            <p>Quantity <input type="text" id="quantity"></p>
+            <p>Price <input type="text" id="price"></p>
+
+        <button onclick="save()">Save</button>
+        <button onclick="show()">Show</button>
+        <button onclick="reset()">Reset</button>
+    <table clas="table ">
+        <thead id="thead">
+            <tr class="table-head">
+                <th>Increment</th>
+                <th>Name Customer</th>
+                <th>Id</th>
+                <th>Name Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script>
+        let arr =[];
+        function save(){
+            var a={
+                nameCus: document.getElementById('nameCus').value,
+                id: document.getElementById('id').value,
+                namePro: document.getElementById('namePro').value,
+                quantity: document.getElementById('quantity').value,
+                price: document.getElementById('price').value,
+            }
+            console.log(a);
+            arr.push(a);
+        }
+
+
+        function show(){
+            var html='';
+            for (i in arr){
+                var n=i;
+                n++;
+                html += "<tr>";
+                html += "<td>"+ (n) +"<td>";
+                html += "<td>"+ arr[i].nameCus +"<td>";
+                html += "<td>"+ arr[i].id +"<td>";
+                html += "<td>"+ arr[i].namePro +"<td>";
+                html += "<td>"+ arr[i].quantity +"<td>";
+                html += "<td>"+ arr[i].price +"<td>";
+                html += "<td>"+ parseFloat(arr[i].quantity)*parseFloat(arr[i].price) +"<td>";
+            }
+            document.getElementById('tbody').innerHTML=html;
+        }
+
+        function reset(){
+            document.getElementById('id').value='';
+            document.getElementById('nameCus').value='';
+            document.getElementById('namePro').value='';
+            document.getElementById('quantity').value='';
+            document.getElementById('price').value='';
+        }
+    </script>
+
+</body>
+</html>
